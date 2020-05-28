@@ -1,8 +1,9 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 import FormInput from "../../components/form-input/form-input.component";
 import CustomButton from "../../components/custom-button/custom-button.component";
-import { signInWithGoogle } from "../../firebase/firebase.utils";
+import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
 
 import "./sign-in.styles.scss";
 
@@ -16,19 +17,36 @@ class SignIn extends React.Component {
     };
   }
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
+    const { email, password } = this.state;
 
-    this.setState({
-      email: "",
-      password: ""
-    });
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({
+        email: "",
+        password: ""
+      });
+      alert("Signed In succesfully, you will be redirected to your homepage");
+      this.props.history.push("/");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   handleChange = event => {
     const { name, value } = event.target;
-
     this.setState({ [name]: value });
+  };
+
+  handlesignInWithGoogle = async () => {
+    try {
+      await signInWithGoogle();
+      alert("Signed In succesfully, you will be redirected to your homepage");
+      this.props.history.push("/");
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   render() {
@@ -60,7 +78,10 @@ class SignIn extends React.Component {
               Sign In
             </CustomButton>
 
-            <CustomButton onClick={signInWithGoogle} required isGoogleSignIn>
+            <CustomButton
+              onClick={this.handlesignInWithGoogle}
+              required
+              isGoogleSignIn>
               Sign In With Google
             </CustomButton>
           </div>
@@ -70,4 +91,4 @@ class SignIn extends React.Component {
   }
 }
 
-export default SignIn;
+export default withRouter(SignIn);

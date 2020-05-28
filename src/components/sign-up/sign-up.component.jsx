@@ -40,6 +40,7 @@ class SignUp extends React.Component {
         password: "",
         confirmPassword: ""
       });
+      alert("Signed Up succesfully, you will be redirected to your homepage");
       this.props.history.push("/");
     } catch (error) {
       console.error(error);
