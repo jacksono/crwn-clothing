@@ -1,5 +1,6 @@
 {
 	"prettier.jsxBracketSameLine": true,
 	"editor.formatOnPaste": true,
-	"editor.formatOnSave": true
+	"editor.formatOnSave": true,
+	"workbench.editor.highlightModifiedTabs": true
 }
