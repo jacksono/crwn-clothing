@@ -1,5 +1,4 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
 
 import FormInput from "../../components/form-input/form-input.component";
 import CustomButton from "../../components/custom-button/custom-button.component";
@@ -27,8 +26,6 @@ class SignIn extends React.Component {
         email: "",
         password: ""
       });
-      alert("Signed In succesfully, you will be redirected to your homepage");
-      this.props.history.push("/");
     } catch (error) {
       console.error(error);
     }
@@ -42,8 +39,6 @@ class SignIn extends React.Component {
   handlesignInWithGoogle = async () => {
     try {
       await signInWithGoogle();
-      alert("Signed In succesfully, you will be redirected to your homepage");
-      this.props.history.push("/");
     } catch (error) {
       console.error(error);
     }
@@ -91,4 +86,4 @@ class SignIn extends React.Component {
   }
 }
 
-export default withRouter(SignIn);
+export default SignIn;
