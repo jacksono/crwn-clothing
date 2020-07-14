@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { createStructuredSelector } from 'reselect';
+import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "../../redux/user/user.selectors.js";
 import { selectCartHidden } from "../../redux/cart/cart.selectors.js";
 
@@ -22,9 +22,6 @@ const Header = props => {
       <div className="options">
         <Link to="/shop" className="option">
           SHOP
-        </Link>
-        <Link to="/shop" className="option">
-          CONTACT
         </Link>
         {currentUser ? (
           <div
