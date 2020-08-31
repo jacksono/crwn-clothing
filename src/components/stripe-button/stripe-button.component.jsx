@@ -13,7 +13,7 @@ const StripeCheckoutButton = ({ price }) => {
     <StripeCheckout
       token={onToken}
       label="Pay Now"
-      name="CRWM Clothing"
+      name="CRWN Clothing"
       billingAddress
       shippingAddress
       image="https://sendeyo.com/up/d/f3eb2117da"
